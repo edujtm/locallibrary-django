@@ -9,7 +9,7 @@
                     <li class="collection-item">
                         <div>
                             {{ bookinst.book.title }} ({{ bookinst.id }})
-                            <a href="{{ bookinst.book.get_absolute_url }}" class="secondary-content"><i class="material-icons">send</i></a>
+                            <a href="{% url 'renew-book-librarian' bookinst.id %}" class="secondary-content"><i class="material-icons">send</i></a>
                         </div>
                     </li>
                 {% endfor %}
