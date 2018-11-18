@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% if borrowed_books %}
+        <div>
+            <ul class="collection with-header">
+                <li class="collection-header"><h4>All borrowed books in library</h4></li>
+                {% for bookinst in borrowed_books %}
+                    <li class="collection-item">
+                        <div>
+                            {{ bookinst.book.title }} ({{ bookinst.id }})
+                            <a href="{{ bookinst.book.get_absolute_url }}" class="secondary-content"><i class="material-icons">send</i></a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <h2>There are no borrowed books in the library.</h2>
+    {% endif %}
+{% endblock %}

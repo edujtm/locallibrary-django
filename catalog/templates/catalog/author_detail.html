@@ -6,9 +6,38 @@
     <div style="margin-left:20px;margin-top:20px">
         <hr>
         <h4>Books</h4>
+        <ul class="collapsible">
         {% for book in author.book_set.all %}
-            <a href="{{ book.get_absolute_url }}"> {{ book.title }} </a><strong>({{ book.bookinstance_set.count }})</strong>
-            <p>{{ book.summary }}</p>
+            <li>
+                <div class="collapsible-header">{{ book.title }} <strong> ({{ book.bookinstance_set.count }})</strong></div>
+                <div class="collapsible-body">
+                    <p>{{ book.summary }}</p>
+                    <h6>
+                        <a class="deep-purple-text darken-2" href="{{ book.get_absolute_url }}">See more details</a>
+                    </h6>
+                </div>
+            </li>
+
+            <!--
+            Card layout
+            <div class="card horizontal">
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4 class="header">{{ book.title }}</h4> <br>
+                        <p>
+                            Copies in library: <strong> ({{ book.bookinstance_set.count }})</strong>
+                        </p>
+                        <p>
+                            {{ book.summary }}
+                        </p>
+                    </div>
+                    <div class="card-action"><a href="{{ book.get_absolute_url }}">See book details</a></div>
+                </div>
+            </div>
+            -->
         {% endfor %}
+        <ul>
+        {% load static %}
+        <script type="text/javascript" src="{% static 'script/collap-books.js' %}"></script>
     </div>
 {% endblock %}
